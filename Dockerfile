@@ -7,7 +7,6 @@ RUN apt-get install -y git
 RUN apt-get install -y python python-pip
 RUN apt-get install -y python-dev
 RUN pip install numpy
-RUN pip install sklearn
 
 COPY *.py /src/image_classification/
 COPY *.csv /src/image_classification/

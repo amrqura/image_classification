@@ -91,13 +91,13 @@ def load():
 def get_label(filename):
     '''
     this function get the label from the file name
-    the dig file name will get 1
-    the cat file name will get 0
+    the dog file name will get [0,1]
+    the cat file name will get [1,0]
     Parameter:
         file_name: the image file  name
     Return:
-        1: dog
-        0: cat
+        [0,1]: dog
+        [1,0]: cat
     '''
     classes = {'dog': [0,1], 'cat': [1,0]}
     for key in classes.keys():
