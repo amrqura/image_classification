@@ -1,0 +1,2 @@
+docker build -t amrkoura/image_classification .
+docker run -t -i  amrkoura/image_classification /bin/bash
