@@ -283,7 +283,11 @@ def save_ouput(path):
   np.savetxt(path, matrix,fmt='%1.0f,%0.2f', delimiter=',',header='id,label')  
 
 with tf.Session(graph=graph) as session:
+    saver = tf.train.Saver()
     tf.initialize_all_variables().run()
+    if os.path.exists("model.ckpt"):
+        print "restore session ......."
+        saver.restore(session, "model.ckpt")
     print('Initialized')
     start_time = time.time()
     for step in range(num_steps):
@@ -317,6 +321,10 @@ with tf.Session(graph=graph) as session:
     dog_testing_prediction=test_prediction.eval()[:,1]
     
     save_ouput('result.csv')
+    
+    #saving model
+    print 'save session to model.ckpt'
+    saver.save(session,'model.ckpt')
     #print(test_prediction.eval())
     #print('Test accuracy: %.1f%%' % accuracy(test_prediction.eval(), test_labels))
     #print('Total elapsed time(mins): ', duration)
